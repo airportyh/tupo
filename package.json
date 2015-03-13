@@ -1,0 +1,28 @@
+{
+  "name": "add-a-typo.js",
+  "version": "1.0.0",
+  "description": "Adds a typo into your JavaScript.",
+  "main": "cli.js",
+  "dependencies": {
+    "esprima": "^2.1.0",
+    "falafel": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:airportyh/add-a-typo.js.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Errors"
+  ],
+  "author": "Toby Ho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/airportyh/add-a-typo.js/issues"
+  },
+  "homepage": "https://github.com/airportyh/add-a-typo.js"
+}
