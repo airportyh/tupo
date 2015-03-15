@@ -9,3 +9,7 @@ comma removal
 dot removal
 binary operator swap?
 literal swap
+
+## Refactor
+
+* can probably use only esprima and remove falafel. Use same technique as tokenizer based technique. Rewrite simpleRewriter.
