@@ -1,17 +1,11 @@
-Paranmismatch for call expressions
-  for function declaration
+Paranmismatch for function declaration
 square bracket mismatch
 operator deletion
 semicolon removal?
 comma removal
-dot removal
-keyword misspellings
-  function
-  var
-  for
-  return
 
 ## Runtime
 
+dot removal
 binary operator swap?
 literal swap
