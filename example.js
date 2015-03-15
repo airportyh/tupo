@@ -10,3 +10,6 @@ for (var i = 0; i < 10; i++){
 
 console.log("Hello world")
 console.log('hody')
+
+var arr = [1, 2, 3]
+console.log(arr[1])

@@ -1,23 +1,69 @@
 var esprima = require('esprima')
 var transforms = require('./transforms')
 
-exports.keyword = function(contents){
-  var tokens = esprima.tokenize(contents, {
-    range: true,
-    raw: true,
-    tokens: true,
-    loc: true
-  })
+exports.keyword = simpleRewriter(
+  function(token){ return token.type === 'Keyword' },
+  function(token){ return transforms.random(token.value) }
+)
 
-  var keywords = tokens.filter(function(node){
-    return node.type === 'Keyword'
-  })
+exports.mismatch = simpleRewriter(
+  function (token){
+    return token.type === 'Punctuator' &&
+      ( token.value === '(' ||
+        token.value === ')' ||
+        token.value === '{' ||
+        token.value === '}' ||
+        token.value === '[' ||
+        token.value === ']'
+      )
+  },
+  function(){ return '' }
+)
 
-  var idx = Math.floor(Math.random() * keywords.length)
-  var chosen = keywords[idx]
-  var typo = transforms.random(chosen.value)
+exports.binaryOperator = simpleRewriter(
+  function(token){
+    return token.type === 'Punctuator' &&
+      ( token.value === '+' ||
+        token.value === '-' ||
+        token.value === '*' ||
+        token.value === '/' ||
+        token.value === '=' ||
+        token.value === '>' ||
+        token.value === '<' ||
+        token.value === '>=' ||
+        token.value === '<=' ||
+        token.value === '==' ||
+        token.value === '===' ||
+        token.value === '!=' ||
+        token.value === '!=='
+      )
+  },
+  function() { return '' }
+)
 
-  var result = contents.substring(0, chosen.range[0]) + typo +
-    contents.substring(chosen.range[1])
-  return result
+exports.comma = simpleRewriter(
+  function(token){
+    return token.type === 'Punctuator' && token.value === ','
+  },
+  function() { return '' }
+)
+
+function simpleRewriter(match, modify){
+  return function(contents){
+    var tokens = esprima.tokenize(contents, {
+      range: true
+    })
+
+    var matches = tokens.filter(match)
+
+    var idx = Math.floor(Math.random() * matches.length)
+    var chosen = matches[idx]
+
+    var result = 
+      contents.substring(0, chosen.range[0]) +
+      modify(chosen) +
+      contents.substring(chosen.range[1])
+
+    return result
+  }
 }

@@ -3,6 +3,9 @@ var falafel = require('falafel')
 var esprimaBased = require('./esprima-based')
 
 exports.keyword = esprimaBased.keyword
+exports.mismatch = esprimaBased.mismatch
+exports.binaryOperator = esprimaBased.binaryOperator
+exports.comma = esprimaBased.comma
 
 exports.identifier = simpleRewriter(
   function(node){ return node.type === 'Identifier' },

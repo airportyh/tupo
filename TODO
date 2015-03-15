@@ -1,8 +1,5 @@
-Paranmismatch for function declaration
-square bracket mismatch
-operator deletion
-semicolon removal?
-comma removal
+* refactor
+
 
 ## Runtime
 
@@ -10,6 +7,4 @@ dot removal
 binary operator swap?
 literal swap
 
-## Refactor
-
-* can probably use only esprima and remove falafel. Use same technique as tokenizer based technique. Rewrite simpleRewriter.
+* semicolon removal?
