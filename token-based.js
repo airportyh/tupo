@@ -48,6 +48,11 @@ exports.comma = simpleRewriter(
   function() { return '' }
 )
 
+exports.identifier = simpleRewriter(
+  function(token){ return token.type === 'Identifier' },
+  function(token){ return transforms.random(token.value) }
+)
+
 function simpleRewriter(match, modify){
   return function(contents){
     var tokens = esprima.tokenize(contents, {

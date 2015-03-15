@@ -7,6 +7,7 @@
     "acorn": "^0.12.0",
     "cmd-ln": "^0.1.0",
     "esprima": "^2.1.0",
+    "estraverse": "^3.1.0",
     "falafel": "^1.0.1"
   },
   "devDependencies": {},
