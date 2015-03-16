@@ -1,4 +1,10 @@
-
+var typo = require('typojs')
+exports.random = function(text){
+  var typos = typo(text)
+  var idx = Math.floor(Math.random() * typos.length)
+  return typos[idx]
+}
+/*
 exports.random = function randomTransform(text){
   var transforms = [exports.mutation, exports.deletion, exports.insertion]
   var idx = Math.floor(Math.random() * transforms.length)
@@ -26,3 +32,4 @@ function randomChar(){
   var idx = Math.floor(Math.random() * chars.length)
   return chars.charAt(idx)
 }
+*/
