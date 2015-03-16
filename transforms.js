@@ -22,7 +22,7 @@ exports.mutation = function mutation(text){
 }
 
 function randomChar(){
-  var range = 122 - 48 + 1
-  var n = 48 + Math.floor(Math.random() * range)
-  return String.fromCharCode(n)
+  var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  var idx = Math.floor(Math.random() * chars.length)
+  return chars.charAt(idx)
 }

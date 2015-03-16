@@ -1,12 +1,12 @@
-var esprima = require('esprima')
 var transforms = require('./transforms')
+var rewriter = require('./tokenBasedRewriter')
 
-exports.keyword = simpleRewriter(
+exports.keyword = rewriter(
   function(token){ return token.type === 'Keyword' },
   function(token){ return transforms.random(token.value) }
 )
 
-exports.mismatch = simpleRewriter(
+exports.mismatch = rewriter(
   function (token){
     return token.type === 'Punctuator' &&
       ( token.value === '(' ||
@@ -20,7 +20,7 @@ exports.mismatch = simpleRewriter(
   function(){ return '' }
 )
 
-exports.binaryOperator = simpleRewriter(
+exports.binaryOperator = rewriter(
   function(token){
     return token.type === 'Punctuator' &&
       ( token.value === '+' ||
@@ -41,34 +41,34 @@ exports.binaryOperator = simpleRewriter(
   function() { return '' }
 )
 
-exports.comma = simpleRewriter(
+exports.comma = rewriter(
   function(token){
     return token.type === 'Punctuator' && token.value === ','
   },
   function() { return '' }
 )
 
-exports.identifier = simpleRewriter(
-  function(token){ return token.type === 'Identifier' },
-  function(token){ return transforms.random(token.value) }
+exports.quotes = rewriter(
+  function(token){ return token.type === 'String' },
+  function(token){ return deleteFrontOrBack(token.value) }
 )
 
-function simpleRewriter(match, modify){
-  return function(contents){
-    var tokens = esprima.tokenize(contents, {
-      range: true
-    })
+var allSyntaxTypos = Object.keys(exports)
+exports.syntax = function(contents){
+  var idx = Math.floor(Math.random() * allSyntaxTypos.length)
+  return exports[allSyntaxTypos[idx]](contents)
+}
 
-    var matches = tokens.filter(match)
-
-    var idx = Math.floor(Math.random() * matches.length)
-    var chosen = matches[idx]
-
-    var result = 
-      contents.substring(0, chosen.range[0]) +
-      modify(chosen) +
-      contents.substring(chosen.range[1])
-
-    return result
+function deleteFrontOrBack(str){
+  if (Math.random() > 0.5){
+    return str.substring(1)
+  }else{
+    return deleteBack(str)
   }
 }
+
+function deleteBack(str){
+  return str.substring(0, str.length - 1)
+}
+
+

@@ -1,10 +1,1 @@
-* refactor
-
-
-## Runtime
-
-dot removal
-binary operator swap?
-literal swap
-
-* semicolon removal?
+Remove semicolon from inside of for loop clauses.
