@@ -3,7 +3,7 @@
 `tupo` is a command line script that adds a typo into your JavaScript.
 
 * Install: `npm install tupo -g`
-* Usage: `tupo <filename> <type>`
+* Usage: `Usage: tupo [options] <JS file>`
 
 Where `type` is one of:
 

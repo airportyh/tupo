@@ -5,7 +5,7 @@ var typos = require('./typos')
 var program = require('commander')
 
 program
-  .usage('[options] file')
+  .usage('[options] <JS file>')
   .option('-t, --type [type]', 'Type of typo')
   .on('--help', function(){
     console.log('  Available types:\n')
