@@ -7,13 +7,13 @@
   },
   "dependencies": {
     "cmd-ln": "^0.1.0",
+    "commander": "^2.7.1",
     "esprima": "^2.1.0",
     "estraverse": "^3.1.0",
     "typojs": "^0.1.1"
   },
   "devDependencies": {},
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git@github.com:airportyh/tupo.git"
