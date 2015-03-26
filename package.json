@@ -1,6 +1,6 @@
 {
   "name": "tupo",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Adds a typo into your JavaScript.",
   "bin": {
     "tupo": "./cli.js"
